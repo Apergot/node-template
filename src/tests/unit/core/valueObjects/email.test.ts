@@ -1,4 +1,4 @@
-import {Email} from "../../../core/email";
+import {Email} from "../../../../core/valueObjects/email";
 
 describe('The Email', () => {
     it('creates an email for a given address in a correct format',  () => {

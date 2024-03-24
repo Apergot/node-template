@@ -1,5 +1,5 @@
-import {ValidationError} from "./validationError";
-import {hash} from "./common/hash";
+import {ValidationError} from "../common/validationError";
+import {hash} from "../common/hash";
 
 export class Password {
 

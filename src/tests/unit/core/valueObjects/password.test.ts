@@ -1,4 +1,4 @@
-import {Password} from "../../../core/password";
+import {Password} from "../../../../core/valueObjects/password";
 
 describe('The Password', () => {
     it('should create a password whenever matched strong password criteria', () => {
