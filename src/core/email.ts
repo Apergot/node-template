@@ -4,10 +4,7 @@ export class Email {
 
     public static INVALID_FORMAT_ERROR_MSG = 'Invalid email format';
 
-    private constructor(
-        private address: string
-    ) {
-    }
+    private constructor(private address: string) {}
 
     static create(address: string) {
         this.isValidAddress(address);

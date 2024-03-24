@@ -39,4 +39,33 @@ describe('The Password', () => {
             `${Password.MISSING_NUMBER_ERROR_MSG}`
         );
     });
+
+    it('ensures password is hashed', () => {
+        const plainText = 'strongPassword_123.';
+        const password = Password.create(plainText);
+        const hashedPassword = password.toString();
+
+        expect(hashedPassword).not.toBe(plainText);
+        expect(hashedPassword.length).toBe(64);
+        expectIsHashed(hashedPassword) ;
+    });
+
+    it('matches when some given passwords are the same', () => {
+        const plainText = 'strongPassword_123.';
+        const passwordA = Password.create(plainText);
+        const passwordB = Password.create(plainText);
+
+        expect(passwordA.equals(passwordB)).toBe(true);
+    });
+
+    it('unmatched when some given passwords are not the same', () => {
+        const passwordA = Password.create('strongPassword_123.');
+        const passwordB = Password.create('strongPassword_123.4');
+
+        expect(passwordA.equals(passwordB)).toBe(false);
+    });
 })
+
+function expectIsHashed(hashedPassword: string) {
+    expect(/^[a-f-F0-9]{64}$/.test(hashedPassword)).toBe(true);
+}

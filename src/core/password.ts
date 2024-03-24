@@ -1,4 +1,5 @@
 import {ValidationError} from "./validationError";
+import {hash} from "./common/hash";
 
 export class Password {
 
@@ -7,12 +8,15 @@ export class Password {
     public static MISSING_UPPERCASE_LETTER_ERROR_MSG = 'does not contain any uppercase letter';
     public static MISSING_NUMBER_ERROR_MSG = 'does not contain at least one number';
 
-    private constructor(private value: string) {
-    }
+    private constructor(private value: string) {}
 
     static create(value: string) {
         this.ensureIsStrongEnough(value)
-        return new Password(value);
+        return new Password(this.hashPlainText(value));
+    }
+
+    private static hashPlainText(value: string) {
+        return hash(value);
     }
 
     private static ensureIsStrongEnough(value: string) {
@@ -56,5 +60,13 @@ export class Password {
     private static containsAtLeastOneNumber(value: string) {
         const regex = /\d/;
         return !regex.test(value);
+    }
+
+    toString() {
+        return this.value;
+    }
+
+    equals(password: Password) {
+        return this.value === password.value;
     }
 }
