@@ -1,6 +1,5 @@
-import {generateUuid} from "./common/uuid";
-
 import {Id} from "../../../core/id";
+import {generateUuid} from "../../../core/common/generateUuid";
 
 function expectIdIsUuid(id: Id) {
     const regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
