@@ -22,4 +22,16 @@ export class User {
     isMatchingPassword(password: Password) {
         return this.password.equals(password);
     }
+
+    isMatchingId(id: Id) {
+        return this.id.equals(id);
+    }
+
+    isMatchingEmail(email: Email) {
+        return this.email.equals(email);
+    }
+
+    equals(user: User) {
+        return this.id.equals(user.id);
+    }
 }
