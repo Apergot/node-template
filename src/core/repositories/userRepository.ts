@@ -2,7 +2,7 @@ import {User} from "../entities/user";
 import {Id} from "../valueObjects/id";
 import {Email} from "../valueObjects/email";
 
-interface UserRepository {
+export interface UserRepository {
     save(user: User): Promise<void>;
     findById(id: Id): Promise<User | undefined>;
     findByEmail(email: Email): Promise<User | undefined>;

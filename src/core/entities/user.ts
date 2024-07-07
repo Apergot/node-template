@@ -34,4 +34,11 @@ export class User {
     equals(user: User) {
         return this.id.equals(user.id);
     }
+
+    toDto() {
+        return {
+            id: this.id.toString(),
+            email: this.email.toString(),
+        }
+    }
 }
