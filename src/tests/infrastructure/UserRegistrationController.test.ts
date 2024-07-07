@@ -37,7 +37,7 @@ describe('The User Registration Controller', () => {
 
         expect(response.status).toHaveBeenCalledWith(400);
         expect(response.json).toHaveBeenCalledWith({
-            message: controller.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED
+            message: UserRegistrationController.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED
         });
     });
 
@@ -50,7 +50,7 @@ describe('The User Registration Controller', () => {
 
         expect(response.status).toHaveBeenCalledWith(400);
         expect(response.json).toHaveBeenCalledWith({
-            message: controller.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED
+            message: UserRegistrationController.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED
         });
     });
 });

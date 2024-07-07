@@ -4,15 +4,15 @@ import {UserRegistrationRequest, UserRegistrationResponse} from "../application/
 import {ValidationError} from "../core/common/validationError";
 
 export class UserRegistrationController {
-    public NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED = 'Email and password are required'
+    public static NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED = 'Email and password are required'
 
     constructor(private readonly service: UserRegistrationService) {
     }
 
-    public async register(
+    register = async (
         request: HttpRequest<UserRegistrationRequest>,
         response: HttpResponse<UserRegistrationResponse>
-    ) {
+    ) => {
         try {
             this.ensureThatEmailAndPasswordAreProvided(request);
             await this.handleRegistration(request, response);
@@ -39,7 +39,7 @@ export class UserRegistrationController {
 
     private ensureThatEmailAndPasswordAreProvided(request: HttpRequest<UserRegistrationRequest>) {
         if (!request.body.email || !request.body.password) {
-            throw new ValidationError(this.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED);
+            throw new ValidationError(UserRegistrationController.NOT_VALID_EMAIL_OR_PASSWORD_PROVIDED);
         }
     }
 }
